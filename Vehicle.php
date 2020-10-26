@@ -1,8 +1,10 @@
 <?php
 
+require_once "Light.php";
+
 // Vehicle.php
 
-abstract class Vehicle
+abstract class Vehicle implements LightableInterface
 {
     protected $color;
 
@@ -63,7 +65,7 @@ abstract class Vehicle
 
 // Bike.php
 
-final class Bike extends Vehicle implements LightableInterface
+final class Bike extends Vehicle
 {
     protected $color;
 
@@ -109,11 +111,20 @@ final class Skateboard extends Vehicle
     {
         parent:: __construct($color, $nbSeats, $nbWheels);
     }
+    public function switchOn()
+    {
+        return true;
+    }
+
+    public function switchOff()
+    {
+        return false;
+    }
 }
 
 // Cars.php
 
-final class Car extends Vehicle implements LightableInterface
+final class Car extends Vehicle
 {
     protected $color;
     
